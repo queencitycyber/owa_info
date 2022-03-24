@@ -20,6 +20,12 @@ from struct import unpack
 
 HostInfo = namedtuple(field_names='cert hostname peername', typename='HostInfo')
 
+try:
+    import requests.packages.urllib3
+    requests.packages.urllib3.disable_warnings()
+except Exception:
+    pass
+
 class owa_info():
     def __init__(self, target, debug=False, timeout=5):
         self.target   = target
